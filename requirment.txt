@@ -1,7 +1,0 @@
-Flask
-opencv-python
-numpy
-keras
-tensorflow
-matplotlib
-scikit-learn
