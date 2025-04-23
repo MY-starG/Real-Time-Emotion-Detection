@@ -1,4 +1,4 @@
 [start]
-cmd = "gunicorn app:app --bind 0.0.0.0:8000"
+cmd = "gunicorn app:app --bind 0.0.0.0:$PORT"
 [build.environment]
 PYTHON_VERSION = "3.10"
