@@ -1,49 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Emotion Detection - My Emotion Model</title>
   <link rel="stylesheet" href="static/page.css">
-  <style>
-    #emotion-box {
-      position: absolute;
-      top: 15px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1.5rem;
-      font-weight: bold;
-      padding: 8px 16px;
-      border-radius: 8px;
-      color: #fff;
-      background-color: rgba(0, 0, 0, 0.7);
-    }
-
-    .emotion-Angry { background-color: #ff0000; }
-    .emotion-Disgust { background-color: #008000; }
-    .emotion-Fear { background-color: #0000ff; }
-    .emotion-Happy { background-color: #00ff00; color: #000; }
-    .emotion-Sad { background-color: #ffff00; color: #000; }
-    .emotion-Surprise { background-color: #00ffff; color: #000; }
-    .emotion-Neutral { background-color: #ff00ff; }
-    .emotion-Contempt { background-color: #800080; }
-  </style>
 </head>
 <body>
   <h1 style="text-align: center;">Emotion Detection - My Emotion Model</h1>
 
-  <!-- Camera selection -->
+  <!-- Camera selection and live video -->
   <div style="text-align: center; margin-bottom: 20px;">
     <h3>Select Camera</h3>
-    <!-- Dropdown inserted by JS -->
+    <!-- Camera dropdown will be inserted by JavaScript -->
   </div>
 
-  <!-- Live video feed -->
-  <div id="video-container" style="text-align: center; position: relative;">
+  <div id="video-container" style="text-align: center;">
     <video id="video" autoplay playsinline style="max-width: 100%; border: 2px solid #ccc;"></video>
     <canvas id="canvas" style="display:none;"></canvas>
-    <div id="emotion-box" class="emotion-Neutral">Detecting Emotion...</div>
   </div>
+
+  <!-- Display detected emotion -->
+  <div id="emotion-display" style="text-align:center; font-size:1.2rem; margin-top:10px;"></div>
 
   <!-- Training graph -->
   <div style="text-align: center; margin-top: 30px;">
@@ -51,14 +29,13 @@
     <img src="/training_graph" alt="Training Graph">
   </div>
 
-  <!-- ROC curve -->
+  <!-- ROC curve and comparison -->
   <div style="text-align: center; margin-top: 30px;">
     <h3>My Emotion Model ROC Curve</h3>
     <img src="static/images/roc_curve_my_emotion_model.png" alt="My Emotion ROC Curve">
     <h3>Comparison Table between FER-2013 and Custom Model</h3>
   </div>
 
-  <!-- Comparison table -->
   <table class="comparison-table" style="margin:0 auto; border-collapse:collapse;">
     <thead>
       <tr>
@@ -68,22 +45,42 @@
       </tr>
     </thead>
     <tbody>
-      <tr><td>Emotion Classes</td><td>7 (Basic emotions)</td><td>8 (Including Contempt)</td></tr>
-      <tr><td>Image Resolution</td><td>48x48 pixels</td><td>96x96 pixels</td></tr>
-      <tr><td>Training Dataset Size</td><td>~35,000 images</td><td>~29,000 images</td></tr>
-      <tr><td>Accuracy</td><td>89%</td><td>92%</td></tr>
-      <tr><td>Log Loss</td><td>2.24</td><td>1.75</td></tr>
+      <tr>
+        <td>Emotion Classes</td>
+        <td>7 (Basic emotions)</td>
+        <td>8 (Including Contempt)</td>
+      </tr>
+      <tr>
+        <td>Image Resolution</td>
+        <td>48x48 pixels</td>
+        <td>96x96 pixels</td>
+      </tr>
+      <tr>
+        <td>Training Dataset Size</td>
+        <td>~35,000 images</td>
+        <td>~29,000 images</td>
+      </tr>
+      <tr>
+        <td>Accuracy</td>
+        <td>89%</td>
+        <td>92%</td>
+      </tr>
+      <tr>
+        <td>Log Loss</td>
+        <td>2.24</td>
+        <td>1.75</td>
+      </tr>
     </tbody>
   </table>
 
   <!-- Go back button -->
   <div style="text-align: center; margin-top: 30px;">
     <button class="animated-button" onclick="window.location.href='/'">
-      <span>Go Back to Home</span><span></span>
+      <span>Go Back to Home</span>
+      <span></span>
     </button>
   </div>
 
-  <!-- Reusable emotion detection JS -->
   <script src="static/page.js" defer></script>
 </body>
 </html>
