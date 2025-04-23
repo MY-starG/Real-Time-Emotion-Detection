@@ -11,8 +11,8 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 app = Flask(__name__)
 
 # Load your models
-fer_model_path = r'emotion_detection_app/static/models/emotion_detection_model.h5'
-emotion_model_path = r'emotion_detection_app/static/models/emotion.h5'
+fer_model_path = r'static/models/emotion_detection_model.h5'
+emotion_model_path = r'static/models/emotion.h5'
 
 # Check if models exist and load them
 if not os.path.exists(fer_model_path):
@@ -65,7 +65,7 @@ def detect_emotion(frame, model, frame_count, predictions, true_labels, accuracy
     faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
 
     for (x, y, w, h) in faces:
-        face = gray[y:y + h, x:x + w]  # Corrected slicing
+        face = gray[y:y + h, x + w]  # Corrected slicing
         face = cv2.resize(face, (48, 48))
         face = np.expand_dims(face, axis=0)
         face = np.expand_dims(face, axis=-1)
@@ -103,8 +103,14 @@ def detect_emotion(frame, model, frame_count, predictions, true_labels, accuracy
 
 # Function to generate video frames
 def generate_frames(model, camera_index=0):
+    print(f"Trying to open camera with index {camera_index}")
     if model is None:
         print("Error: No model provided for emotion detection.")
+        return
+
+    camera = cv2.VideoCapture(camera_index)
+    if not camera.isOpened():
+        print(f"Error: Could not open camera with index {camera_index}")
         return
 
     frame_count = 0
@@ -112,13 +118,6 @@ def generate_frames(model, camera_index=0):
     true_labels = []  # Store true labels for calculating accuracy (use actual ground truth data if available)
     accuracy = None
     f1 = None
-
-    # Open the selected camera by using camera_index
-    camera = cv2.VideoCapture(camera_index)  # Use the selected camera (Camera 0 by default)
-
-    if not camera.isOpened():
-        print(f"Error: Could not open camera with index {camera_index}")
-        return
 
     try:
         while True:
