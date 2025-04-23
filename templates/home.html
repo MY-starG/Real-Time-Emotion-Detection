@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <h1>Welcome to the Live Emotion Detection System</h1>
+    <div class="options-header">Choose Your Options</div>
+    <div class="nav-container">
+        <div class="card" onclick="expandCardAndNavigate(this, '/page1')">
+            <div class="card__icon-text">FER-2013 Model</div> <!-- Text replacing the SVG -->
+            <div class="card__initial">
+            </div>
+            <div class="card__content">
+                <p class="card__title">FER-2013 Model</p>
+                <p class="card__description">FER-2013 is a widely used dataset for facial emotion recognition, featuring 48x48 pixel grayscale images categorized into seven emotions: Angry, Disgust, Fear, Happy, Sad, Surprise, and Neutral. It serves as a benchmark for developing and evaluating emotion recognition algorithms.</p>
+            </div>
+        </div>
+        <div class="card" onclick="expandCardAndNavigate(this, '/page2')">
+                <div class="card__icon-text">My Emotions Model</div> <!-- Text replacing the SVG -->
+                <div class="card__initial">
+                </div>
+            <div class="card__content">
+                <p class="card__title">Emotion Model</p>
+                <p class="card__description">My Dataset is a custom facial emotion recognition dataset with 96x96 pixel grayscale images, comprising around 29,000 images categorized into eight emotions: Happy, Sad, Fear, Disgust, Contempt, Surprise, Neutral, and Anger. It follows the same CSV format as FER-2013, containing pixel values for each image.</p>
+            </div>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <script src="static/script.js" defer></script>
+</body>
+</html>

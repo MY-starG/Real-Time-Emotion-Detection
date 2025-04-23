@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Real-Time Emotion Detection</h1>
+    
+    <div class="video-container">
+        <img src="{{ url_for('video_feed') }}" id="video" alt="Video Feed">
+    </div>
+
+    <h2>Model Evaluation Metrics</h2>
+    <p>Accuracy: {{ accuracy }}</p>
+    <p>F1 Score: {{ f1 }}</p>
+    <img src="{{ url_for('static', filename='metrics_chart.png') }}" alt="Metrics Chart">
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

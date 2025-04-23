@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Detection - Page 1</title>
+    <link rel="stylesheet" href="static/page.css">
+</head>
+<body>
+    <h1 style="text-align: center;">Emotion Detection - FER Model</h1>
+    
+    <!-- Camera selection buttons -->
+    <div style="text-align: center; margin-bottom: 20px;">
+        <h3>Select Camera</h3>
+        <button class="btn" onclick="changeCamera(0)">Camera 1</button>
+        <button class="btn" onclick="changeCamera(1)">Camera 2</button>
+    </div>
+
+    <!-- Live video feed -->
+    <div id="video-container" style="text-align: center;">
+        <img id="live-video" src="{{ url_for('video_feed_fer') }}" />
+    </div>
+
+    <!-- Training graph -->
+    <div style="text-align: center; margin-top: 30px;">
+        <h3>Training Graph - FER-2013</h3>
+        <img src="/training_graph" alt="Training Graph">
+    </div>
+    <div style="text-align: center; margin-top: 30px;">
+        <h3>FER-2013 Model ROC Curve</h3>
+        <img src="static/images/roc_curve_Fer-2013.png" alt="FER-2013 ROC Curve">
+        <p>Log Loss: 2.24</p>
+    </div>
+    <!-- Go back button -->
+    <div style="text-align: center; margin-top: 30px;">
+        <button class="animated-button" onclick="window.history.go(-2);">
+            <span>Go Back to Home</span>
+            <span></span>
+        </button>
+    </div>
+    <script src="static/page.js" defer></script>
+</body>
+</html>
