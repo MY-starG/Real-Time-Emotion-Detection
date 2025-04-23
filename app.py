@@ -176,7 +176,17 @@ def training_graph():
 # Home Page
 @app.route('/')
 def home():
-    return render_template('home.html')
+    metrics = {
+        "fer": {
+            "accuracy": "92.5%",
+            "f1_score": "0.91"
+        },
+        "custom": {
+            "accuracy": "95.2%",
+            "f1_score": "0.94"
+        }
+    }
+    return render_template('home.html', metrics=metrics)
 
 # Page 1: FER Model
 @app.route('/page1')

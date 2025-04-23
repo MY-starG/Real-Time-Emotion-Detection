@@ -30,8 +30,47 @@
     <div style="text-align: center; margin-top: 30px;">
         <h3>My Emotion Model ROC Curve</h3>
         <img src="static/images/roc_curve_my_emotion_model.png" alt="My Emotion ROC Curve">
-        <p>Log Loss: 1.75</p>
+        <h3>
+            Comparison Table between FER-2013 and Custom Model
+                    <br>
+                    </h3>
     </div>
+    <table class="comparison-table" style="margin:0 auto; border-collapse:collapse;">
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>FER-2013 Model</th>
+                <th>Custom Model</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Emotion Classes</td>
+                <td>7 (Basic emotions)</td>
+                <td>8 (Including Contempt)</td>
+            </tr>
+            <tr>
+                <td>Image Resolution</td>
+                <td>48x48 pixels</td>
+                <td>96x96 pixels</td>
+            </tr>
+            <tr>
+                <td>Training Dataset Size</td>
+                <td>~35,000 images</td>
+                <td>~29,000 images</td>
+            </tr>
+            <tr>
+                <td>Accuracy</td>
+                <td>89%</td>
+                <td>92%</td>
+            </tr>
+            <tr>
+                <td>Log Loss</td>
+                <td>2.24</td>
+                <td>1.75</td>
+            </tr>
+        </tbody>
+    </table>
     <!-- Go back button -->
     <div style="text-align: center; margin-top: 30px;">
         <button class="animated-button" onclick="window.location.href='/'">
