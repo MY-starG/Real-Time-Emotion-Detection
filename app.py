@@ -130,14 +130,10 @@ def process_frame():
     img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
 
     predictions, true_labels = [], []
-    _, _, _, detected_emotion, confidence = detect_emotion(
-        img, emotion_model, frame_count=1, predictions=predictions, true_labels=true_labels
-    )
-
-    return jsonify({
-        'emotion': detected_emotion or 'No Face Detected',
-        'confidence': float(confidence) if detected_emotion else None
-    })
+    _, _, _, detected_emotion = detect_emotion(img, emotion_model, frame_count=1,
+                                               predictions=predictions, true_labels=true_labels)
+    
+    return jsonify({'emotion': detected_emotion or 'No Face Detected'})
 
 @app.route('/training_graph')
 def training_graph():
